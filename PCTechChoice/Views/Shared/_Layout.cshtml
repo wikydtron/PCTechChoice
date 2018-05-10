@@ -7,49 +7,283 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        @* mwilliams:  Add reference to font-awesome css*@
+        @*<link rel="stylesheet" href="~/lib/font-awesome/web-fonts-with-css/css/fontawesome-all.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/svg-with-js/css/fa-svg-with-js.css"/>*@
+        <link rel="stylesheet" href="~/vendor/font-awesome/css/font-awesome.css"/>
+        <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="~/lib/magnific-popup/dist/magnific-popup.css" />
+        <link rel="stylesheet" href="~/css/freelancer.css"/>
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+              asp-fallback-href="~/lib/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css"
+              asp-fallback-test-class="fa" asp-fallback-test-property="display"
+              asp-fallback-test-value="inline-block" />
+        <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="~/lib/magnific-popup/dist/magnific-popup.css" />
+        <link rel="stylesheet" href="~/css/freelancer.min.css" />
     </environment>
 </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">PCTechChoice</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">PC Tech Choice</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Components</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                    </li>
+                    @*<li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+                    </li>*@
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - PCTechChoice</p>
-        </footer>
+
+    @RenderBody()
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Location</h4>
+                    <p class="lead mb-0">
+                        4 Flanders Ct,
+                        <br>Moncton, NB E1C 0K6
+                    </p>
+                </div>
+                <div class="col-md-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Around the Web</h4>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-dribbble"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                    <p class="lead mb-0">
+                        Freelance is a free to use, open source Bootstrap theme created by Bootstrap.
+                        @*<a href="http://startbootstrap.com">Start Bootstrap</a>.*@
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="copyright py-4 text-center text-white">
+        <div class="container">
+            <small>Copyright &copy; PC Tech Choice 2018</small>
+        </div>
     </div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <!-- Portfolio Modal 1 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-1">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Cooling</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="~/img/portfolio/cooling.png" alt="">
+                        <p class="mb-5">Computer cooling is required to remove the waste heat produced by computer components, to keep components within permissible operating temperature limits. Components that are susceptible to temporary malfunction or permanent failure if overheated include integrated circuits such as Central processing units (CPUs), chipset, graphics cards, and hard disk drives.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#"><i class="fa fa-shopping-cart"></i> Shop</a>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 2 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">RAM</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="~/img/portfolio/ram.png" alt="">
+                        <p class="mb-5">Random-access memory (RAM) is a form of computer data storage that stores data and machine code currently being used. A random-access memory device allows data items to be read or written in almost the same amount of time irrespective of the physical location of data inside the memory.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#"><i class="fa fa-shopping-cart"></i> Shop</a>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 3 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Motherboards</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="~/img/portfolio/mobo.png" alt="">
+                        <p class="mb-5">A motherboard is the main printed circuit board (PCB) found in general purpose microcomputers and other expandable systems. It holds and allows communication between many of the crucial electronic components of a system, such as the central processing unit (CPU) and memory, and provides connectors for other peripherals.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#"><i class="fa fa-shopping-cart"></i> Shop</a>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 4 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-4">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Power Supplies</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="~/img/portfolio/pcu.png" alt="">
+                        <p class="mb-5">A power supply is an electrical device that supplies electric power to an electrical load. The primary function of a power supply is to convert electric current from a source to the correct voltage, current, and frequency to power the load. As a result, power supplies are sometimes referred to as electric power converters. </p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#"><i class="fa fa-shopping-cart"></i> Shop</a>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 5 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-5">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Graphic Cards</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="~/img/portfolio/gpu.png" alt="">
+                        <p class="mb-5">A graphics processing unit (GPU) is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device. GPUs are used in embedded systems, mobile phones, personal computers, workstations, and game consoles.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#"><i class="fa fa-shopping-cart"></i> Shop</a>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 6 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-6">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Central Processing Unit</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="~/img/portfolio/cpu.png" alt="">
+                        <p class="mb-5">A central processing unit (CPU) is the electronic circuitry within a computer that carries out the instructions of a computer program by performing the basic arithmetic, logical, control and input/output (I/O) operations specified by the instructions.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#"><i class="fa fa-shopping-cart"></i> Shop</a>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        @* mwilliams:  update to bootstrap 4 - requires popper.js *@
+        <script src="~/lib/popper.js/dist/popper.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.js"></script>
+        <script src="~/vendor/jquery-easing/jquery.easing.js"></script>
+        <script src="~/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+        <script src="~/js/jqBootstrapValidation.js"></script>
+        <script src="~/js/contact_me.js"></script>
+        <script src="~/js/freelancer.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -58,13 +292,26 @@
                 crossorigin="anonymous"
                 integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+                integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
                 crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+                asp-fallback-src="~/lib/popper.js/dist/popper.min.js"
+                asp-fallback-test="window.Popper">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+                integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                crossorigin="anonymous"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="~/lib/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+        <script src="~/js/jqBootstrapValidation.min.js"></script>
+        <script src="~/js/contact_me.min.js"></script>
+        <script src="~/js/freelancer.min.js"></script>
+        
     </environment>
 
     @RenderSection("Scripts", required: false)
